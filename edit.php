@@ -1,6 +1,16 @@
 <?php
     include "connect.php";
+    //error_reporting(0);
+
+    $matr = $_GET['matr'];
+    $photo = $_GET['pic'];
+    $sql_data = "SELECT * FROM employe WHERE 
+    matricule = '$matr'";
+    $result = $conn->query($sql_data);
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,60 +19,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
     <title>Document</title>
 </head>
 
 <body>
-    <form action="employeForm.php" method="POST" enctype="multipart/form-data">
-        <input type="text" name="matricule" placeholder="Matricule">
-        <input type="text" name="nom" placeholder="Nom">
-        <input type="text" name="prénom" placeholder="Prénom">
-        <input type="date" name="date_naissance" placeholder="date de naissance">
-        <input type="text" name="département" placeholder="département">
-        <input type="number" step="any" name="salaire" placeholder="salaire">
-        <input type="text" name="fonction" placeholder="fonction">
-        <input type="file" name="uploadfile" value="">
+    <form action="edit.php?matr=<?php echo $matr ."&pic=$photo"?>" method="POST" enctype="multipart/form-data">
+        <input type="text" name="nom" value="<?php echo $row["nom"]; ?>">
+        <input type="text" name="prénom" value="<?php echo $row["prénom"]; ?>">
+        <input type="date" name="date_naissance" value="<?php echo $row["date_naissance"] ; ?>">
+        <input type="text" name="département" value="<?php echo $row["département"]; ?>">
+        <input type="number" step="any" name="salaire" value="<?php echo $row["salaire"]; ?>">
+        <input type="text" name="fonction" value="<?php echo $row["fonction"];?>">
+        <img src="images/<?php echo $row["photo"];?>" alt="ok">
+        <input type="file" name="uploadfile">
         <input type="submit" name="edit" value="edit">
     </form>
 
-    <?php
-    $msg ="";
+</body>
 
-    // if edit is clicked
-    if (isset($_POST['submit'])) {
-        $matricule = $_POST['matricule'];
-        $nom = $_POST['nom'];
-        $prénom = $_POST['prénom'];
-        $date = $_POST['date_naissance'];
-        $département = $_POST['département'];
-        $salaire = $_POST['salaire'];
-        $fonction = $_POST['fonction'];
+</html>
+
+<?php 
+    if(isset($_POST["edit"])){
+        $matri = $_GET["matricule"];
+        $nom = $_POST["nom"];
+        $prénom = $_POST["prénom"];
+        $date = $_POST["date_naissance"];
+        $dépa = $_POST["département"];
+        $salaire = $_POST["salaire"];
+        $fonction = $_POST["fonction"];
 
         $fileName = $_FILES["uploadfile"]["name"];
         $tempName = $_FILES["uploadfile"]["tmp_name"];
         $folder = "images/" . $fileName;
 
-        //insert into database table
-        $sql = "INSERT INTO employe (matricule, nom, prénom, date_naissance, département, salaire, fonction, photo)
-            VALUES ('$matricule','$nom','$prénom', '$date', '$département', '$salaire', '$fonction', '$fileName')";
+        if($fileName == ""){
+            $fileName = $photo;
+        }
         
-        // move the uploaded image into the folder: images
-        if (move_uploaded_file($tempName, $folder))  {
+        //update request
+        $sql_update = "UPDATE employe
+        SET nom = '$nom', prénom= '$prénom', date_naissance= '$date', département='$dépa', salaire='$salaire', fonction='$fonction', photo='$fileName'
+        WHERE matricule = '$matr'";
+        echo $sql_query;
+        $msg="";
+         // move the uploaded image into the folder: images
+         if (move_uploaded_file($tempName, $folder))  {
             $msg = "Image uploaded successfully";
         }else{
             $msg = "Failed to upload image";
         }
         
-         //excute query
-         if (mysqli_query($conn, $sql)) {
-            echo "New line has been added";
-        } else {
-            echo "Error: " . $sql . ":-" . mysqli_error($conn);
+        if(mysqli_query($conn, $sql_update)){
+            $msg = "ok";
         }
-        mysqli_close($conn);
+        else{
+            $msg = "no";
+        }
+        header("location: index.php");
     }
-    ?>
-</body>
-
-</html>
+?>

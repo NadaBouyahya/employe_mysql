@@ -28,8 +28,8 @@
      
         </tr>
             <?php
-             if(isset($_GET['rn'])){
-                $matricule = $_GET['rn']; 
+             if(isset($_GET['matr'])){
+                $matricule = $_GET['matr']; 
                 $query = "DELETE FROM employe WHERE matricule = '$matricule'";
              
                 $data = mysqli_query($conn, $query); //delete record from database 
@@ -57,8 +57,8 @@
                             <td>" . $row["salaire"] . "</td>
                             <td>" . $row["fonction"] . "</td> 
                             <td> <img src=images/" . $row["photo"] ."></td> 
-                            <td> <a href='index.php?rn=$row[matricule]' onClick=\"return confirm('are you sure?')\"> <img class='update' src='delete.png'></a> 
-                                 <a href='edit.php?rn=$row[matricule]'> <img class='update' src='write.png'></a> 
+                            <td> <a href='index.php?matr=$row[matricule]' onClick=\"return confirm('are you sure?')\"> <img class='update' src='delete.png'></a> 
+                                 <a href='edit.php?matr=$row[matricule]&pic=$row[photo]'> <img class='update' src='write.png'></a> 
                             </td>
                          </tr>
                          ";
