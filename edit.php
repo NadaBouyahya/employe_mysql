@@ -25,6 +25,10 @@
 </head>
 
 <body>
+     <!-- navbar -->
+     <?php include 'navbar.html';?>
+    <!--  -->
+    
     <form action="edit.php?matr=<?php echo $matr ."&pic=$photo"?>" method="POST" enctype="multipart/form-data">
         <input type="text" name="nom" value="<?php echo $row["nom"]; ?>">
         <input type="text" name="prénom" value="<?php echo $row["prénom"]; ?>">

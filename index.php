@@ -14,6 +14,10 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- navbar -->
+    <?php include 'navbar.html';?>
+    <!--  -->
+    
     <table class="table table-striped">
         <tr>
             <th>matricule</th>
@@ -41,7 +45,16 @@
                     echo "failed to delete";
                 }
              }
-                $sql = "SELECT * FROM employe;";
+                if(isset($_POST["search_btn"])){
+                    $select = $_POST["search_select"];
+                    $search_input = $_POST["search"];
+                    $sql = "SELECT * FROM employe
+                    WHERE $select LIKE '%$search_input%'";
+                }
+                else{
+                    $sql = "SELECT * FROM employe;";
+                }
+                
                 $result = mysqli_query($conn, $sql);
                 $resultCheck = mysqli_num_rows($result);
                 
