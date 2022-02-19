@@ -17,7 +17,7 @@
     <!-- navbar -->
     <?php include 'navbar.html';?>
     <!--  -->
-    
+
     <table class="table table-striped">
         <tr>
             <th>matricule</th>
@@ -44,6 +44,10 @@
                 else{
                     echo "failed to delete";
                 }
+                // $dlt_query = "SELECT photo FROM employe WHERE matricule = '$matricule'";
+                // $dlt_data = mysqli_query($conn, $dlt_query);
+                // $res = mysqli_fetch_assoc($dlt_data);
+                // unlink("images/".$res["photo"]);
              }
                 if(isset($_POST["search_btn"])){
                     $select = $_POST["search_select"];
