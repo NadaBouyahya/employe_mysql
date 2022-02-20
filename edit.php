@@ -20,6 +20,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="fontawesome/css/all.css">
     <title>Document</title>
 </head>
@@ -28,18 +29,19 @@
      <!-- navbar -->
      <?php include 'navbar.html';?>
     <!--  -->
-    
-    <form action="edit.php?matr=<?php echo $matr ."&pic=$photo"?>" method="POST" enctype="multipart/form-data">
-        <input type="text" name="nom" value="<?php echo $row["nom"]; ?>">
-        <input type="text" name="prénom" value="<?php echo $row["prénom"]; ?>">
-        <input type="date" name="date_naissance" value="<?php echo $row["date_naissance"] ; ?>">
-        <input type="text" name="département" value="<?php echo $row["département"]; ?>">
-        <input type="number" step="any" name="salaire" value="<?php echo $row["salaire"]; ?>">
-        <input type="text" name="fonction" value="<?php echo $row["fonction"];?>">
+   <main  class="bg text-center">
+   <form class="centered row " action="edit.php?matr=<?php echo $matr ."&pic=$photo"?>" method="POST" enctype="multipart/form-data">
+        <input class="InputStyle col-12" type="text" name="nom" value="<?php echo $row["nom"]; ?>">
+        <input class="InputStyle col-12" type="text" name="prénom" value="<?php echo $row["prénom"]; ?>">
+        <input class="InputStyle col-12" type="date" name="date_naissance" value="<?php echo $row["date_naissance"] ; ?>">
+        <input class="InputStyle col-12" type="text" name="département" value="<?php echo $row["département"]; ?>">
+        <input class="InputStyle col-12" type="number" step="any" name="salaire" value="<?php echo $row["salaire"]; ?>">
+        <input class="InputStyle col-12" type="text" name="fonction" value="<?php echo $row["fonction"];?>">
         <img src="images/<?php echo $row["photo"];?>" alt="ok">
-        <input type="file" name="uploadfile">
-        <input type="submit" name="edit" value="edit">
+        <input class="InputStyle col-12"type="file" name="uploadfile">
+        <input id="subm" class="InputStyle btn btn-outline-dark col-4" type="submit" name="edit" value="edit">
     </form>
+  </main>
 
 </body>
 

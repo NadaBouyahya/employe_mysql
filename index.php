@@ -38,12 +38,12 @@
              
                 $data = mysqli_query($conn, $query); //delete record from database 
              
-                if($data){
-                    echo "record deleted";
-                }
-                else{
-                    echo "failed to delete";
-                }
+                // if($data){
+                //     echo "record deleted";
+                // }
+                // else{
+                //     echo "failed to delete";
+                // }
                 // $dlt_query = "SELECT photo FROM employe WHERE matricule = '$matricule'";
                 // $dlt_data = mysqli_query($conn, $dlt_query);
                 // $res = mysqli_fetch_assoc($dlt_data);
