@@ -21,7 +21,7 @@ nav{
     padding: 50px;
     background-color:lightslategrey ;
     position: absolute;
-    top: 64%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 25px;
@@ -60,7 +60,7 @@ img{
     width: 80px;
 }
 
-.update {
+/* .update {
     width: 20px;
 
-}
+} */

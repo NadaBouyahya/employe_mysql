@@ -30,7 +30,7 @@
      <?php include 'navbar.html';?>
     <!--  -->
    <main  class="bg text-center">
-   <form class="centered row " action="edit.php?matr=<?php echo $matr ."&pic=$photo"?>" method="POST" enctype="multipart/form-data">
+   <form class="container-md centered row " action="edit.php?matr=<?php echo $matr ."&pic=$photo"?>" method="POST" enctype="multipart/form-data">
         <input class="InputStyle col-12" type="text" name="nom" value="<?php echo $row["nom"]; ?>">
         <input class="InputStyle col-12" type="text" name="prénom" value="<?php echo $row["prénom"]; ?>">
         <input class="InputStyle col-12" type="date" name="date_naissance" value="<?php echo $row["date_naissance"] ; ?>">

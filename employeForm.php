@@ -18,7 +18,7 @@ include "connect.php"
 <body>
     <?php include 'navbar.html';?>
     <main class="bg text-center">
-        <form class="centered row " action="employeForm.php" method="POST" enctype="multipart/form-data">
+        <form class="container-md centered row " action="employeForm.php" method="POST" enctype="multipart/form-data">
             <input class="InputStyle col-12" type="text" name="matricule" placeholder="Matricule">
             <input class="InputStyle col-12" type="text" name="nom" placeholder="Nom">
             <input class="InputStyle col-12" type="text" name="prénom" placeholder="Prénom">

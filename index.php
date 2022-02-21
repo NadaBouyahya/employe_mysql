@@ -18,12 +18,12 @@
     <?php include 'navbar.html';?>
     <!--  -->
 
-    <table class="table table-striped">
+    <table class="mt-4 table table-striped table-bordered table-responsive-xl">
         <tr>
             <th>matricule</th>
             <th>nom</th>
             <th>prénom</th>
-            <th>date_naissance</th>
+            <th>date de naissance</th>
             <th>département</th>
             <th>salaire</th>
             <th>fonction</th>
